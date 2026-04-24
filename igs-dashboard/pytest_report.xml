@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="1" failures="0" skipped="0" tests="1" time="1.793" timestamp="2026-04-24T05:24:02.169945+00:00" hostname="codespaces-429028"><testcase classname="" name="tests.test_api" time="0.000"><error message="collection failure">/usr/local/python/3.12.1/lib/python3.12/site-packages/sqlalchemy/engine/base.py:2116: in _exec_insertmany_context
+    dialect.do_execute(
+/usr/local/python/3.12.1/lib/python3.12/site-packages/sqlalchemy/engine/default.py:924: in do_execute
+    cursor.execute(statement, parameters)
+E   sqlite3.IntegrityError: UNIQUE constraint failed: census_tracts.census_tract
+
+The above exception was the direct cause of the following exception:
+tests/test_api.py:2: in &lt;module&gt;
+    from main import app, create_access_token
+main.py:10: in &lt;module&gt;
+    from database import CensusTract, get_db
+database.py:45: in &lt;module&gt;
+    init_db()
+database.py:35: in init_db
+    session.commit()
+/usr/local/python/3.12.1/lib/python3.12/site-packages/sqlalchemy/orm/session.py:2017: in commit
+    trans.commit(_to_root=True)
+&lt;string&gt;:2: in commit
+    ???
+/usr/local/python/3.12.1/lib/python3.12/site-packages/sqlalchemy/orm/state_changes.py:139: in _go
+    ret_value = fn(self, *arg, **kw)
+/usr/local/python/3.12.1/lib/python3.12/site-packages/sqlalchemy/orm/session.py:1302: in commit
+    self._prepare_impl()
+&lt;string&gt;:2: in _prepare_impl
+    ???
+/usr/local/python/3.12.1/lib/python3.12/site-packages/sqlalchemy/orm/state_changes.py:139: in _go
+    ret_value = fn(self, *arg, **kw)
+/usr/local/python/3.12.1/lib/python3.12/site-packages/sqlalchemy/orm/session.py:1277: in _prepare_impl
+    self.session.flush()
+/usr/local/python/3.12.1/lib/python3.12/site-packages/sqlalchemy/orm/session.py:4341: in flush
+    self._flush(objects)
+/usr/local/python/3.12.1/lib/python3.12/site-packages/sqlalchemy/orm/session.py:4476: in _flush
+    with util.safe_reraise():
+/usr/local/python/3.12.1/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py:146: in __exit__
+    raise exc_value.with_traceback(exc_tb)
+/usr/local/python/3.12.1/lib/python3.12/site-packages/sqlalchemy/orm/session.py:4437: in _flush
+    flush_context.execute()
+/usr/local/python/3.12.1/lib/python3.12/site-packages/sqlalchemy/orm/unitofwork.py:466: in execute
+    rec.execute(self)
+/usr/local/python/3.12.1/lib/python3.12/site-packages/sqlalchemy/orm/unitofwork.py:642: in execute
+    util.preloaded.orm_persistence.save_obj(
+/usr/local/python/3.12.1/lib/python3.12/site-packages/sqlalchemy/orm/persistence.py:93: in save_obj
+    _emit_insert_statements(
+/usr/local/python/3.12.1/lib/python3.12/site-packages/sqlalchemy/orm/persistence.py:1143: in _emit_insert_statements
+    result = connection.execute(
+/usr/local/python/3.12.1/lib/python3.12/site-packages/sqlalchemy/engine/base.py:1418: in execute
+    return meth(
+/usr/local/python/3.12.1/lib/python3.12/site-packages/sqlalchemy/sql/elements.py:515: in _execute_on_connection
+    return connection._execute_clauseelement(
+/usr/local/python/3.12.1/lib/python3.12/site-packages/sqlalchemy/engine/base.py:1640: in _execute_clauseelement
+    ret = self._execute_context(
+/usr/local/python/3.12.1/lib/python3.12/site-packages/sqlalchemy/engine/base.py:1844: in _execute_context
+    return self._exec_insertmany_context(dialect, context)
+/usr/local/python/3.12.1/lib/python3.12/site-packages/sqlalchemy/engine/base.py:2124: in _exec_insertmany_context
+    self._handle_dbapi_exception(
+/usr/local/python/3.12.1/lib/python3.12/site-packages/sqlalchemy/engine/base.py:2353: in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+/usr/local/python/3.12.1/lib/python3.12/site-packages/sqlalchemy/engine/base.py:2116: in _exec_insertmany_context
+    dialect.do_execute(
+/usr/local/python/3.12.1/lib/python3.12/site-packages/sqlalchemy/engine/default.py:924: in do_execute
+    cursor.execute(statement, parameters)
+E   sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) UNIQUE constraint failed: census_tracts.census_tract
+E   [SQL: INSERT INTO census_tracts (census_tract, inclusion_score, growth_score, economy_score, community_score) VALUES (?, ?, ?, ?, ?) RETURNING id]
+E   [parameters: ('6037102107', 45.0, 60.0, 50.0, 55.0)]
+E   (Background on this error at: https://sqlalche.me/e/20/gkpj)</error></testcase></testsuite></testsuites>
